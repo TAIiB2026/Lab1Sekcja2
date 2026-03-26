@@ -1,0 +1,22 @@
+<p>{{title}}</p>
+<p>Wartość licznika to: {{counter}}</p>
+
+<button (click)="updateCounter()">Podnieś licznik</button>
+<!-- <button [disabled]="!canDelete" (click)="onDeleteClick()">Usuń</button> -->
+<!-- <button *ngIf="canDelete; else canDeleteElse" (click)="onDeleteClick()">Usuń</button> -->
+
+@if(canDelete) {
+    <button (click)="onDeleteClick()">Usuń</button>
+} 
+@else if(counter > 5) {
+    Brak uprawnień, ale licznik posiada wartość powyżej 5
+}
+@else {
+    Brak uprawnień
+}
+
+<!-- <ng-template #canDeleteElse>
+    Brak uprawnień
+</ng-template> -->
+
+<hr />

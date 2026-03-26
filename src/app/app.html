@@ -1,0 +1,24 @@
+<h1 appMyDirectove>Właściwość: {{title + '!'}}!</h1>
+<h2 appMyDirectove="blue">Wywołanie metody: {{getDoubleTitle()}}</h2>
+<h3 appMyDirectove="yellow">Wywołanie gettera: {{doubleTitle}}</h3>
+<p>Wartość licznika globalnego to: {{counter}}</p>
+
+<div>
+  <label for="name">Nazwa:</label>
+  <input type="text" id="name" placeholder="Podaj wartość..." [(ngModel)]="inputValue" />
+  <button (click)="onAddClick()">Dodaj komponent</button>
+  <button (click)="canDelete = !canDelete">{{canDelete ? 'Zablokuj usuwanie' : 'Włącz usuwanie'}}</button>
+</div>
+
+<!-- <app-secondary *ngFor="let item of componentsList" [title]="item" (counterUpdated)="onCounterUpdated()" (delete)="onDelete($event)" [canDelete]="canDelete"></app-secondary> -->
+
+@for(item of componentsList; track item) {
+  <app-secondary [title]="item" (counterUpdated)="onCounterUpdated()" (delete)="onDelete($event)" [canDelete]="canDelete"></app-secondary>
+} @empty {
+  Tablica jest pusta
+}
+
+<!-- <app-secondary title="pierwszy" (counterUpdated)="onCounterUpdated()"></app-secondary>
+<app-secondary title="drugi" (counterUpdated)="onCounterUpdated()"></app-secondary>
+<app-secondary title="trzeci" (counterUpdated)="onCounterUpdated()"></app-secondary>
+<app-secondary title="czwarty" (counterUpdated)="onCounterUpdated()"></app-secondary> -->

@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Data urodzenia</th>
+            <th>Wiek</th>
+            <th>Przejdź</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let p of people; trackBy: trackPersonBy">
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.surname}}</td>
+            <td>{{p.dateOfBirth | date:'longDate'}}</td>
+            <!-- <td>{{calculateAge(p)}}</td> -->
+            <td>{{p | age}}</td>
+            <td><a [routerLink]="p.id + ''">Przejdź</a></td>
+        </tr>
+    </tbody>
+</table>

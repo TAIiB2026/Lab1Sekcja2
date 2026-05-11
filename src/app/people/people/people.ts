@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PersonClass } from '../../classes/person.class';
-import { PeopleRepository } from '../../people-repository';
+import { PeopleRepositoryService } from '../../people-repository';
 
 @Component({
   selector: 'app-people',
@@ -11,7 +11,7 @@ import { PeopleRepository } from '../../people-repository';
 export class People {
   public people: PersonClass[] = [];
 
-  constructor(peopleRepository: PeopleRepository) {
+  constructor(peopleRepository: PeopleRepositoryService) {
     this.people = peopleRepository.get();
   }
 

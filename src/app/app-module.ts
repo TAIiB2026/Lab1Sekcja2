@@ -7,9 +7,10 @@ import { Secondary } from './secondary/secondary';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MyDirectove } from './my-directove';
+import { Menu } from './menu/menu';
 
 @NgModule({
-  declarations: [App, Secondary, MyDirectove],
+  declarations: [App, Secondary, MyDirectove, Menu],
   imports: [BrowserModule, CommonModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],

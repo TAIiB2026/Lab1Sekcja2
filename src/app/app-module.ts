@@ -12,11 +12,17 @@ import { SterownikLicznika } from './sterownik-licznika/sterownik-licznika';
 import { Licznik } from './licznik/licznik';
 import { LicznikGlobalny } from './services/licznik-globalny';
 import { Formularz } from './formularz/formularz';
+import { PEOPLE_REPSITORY_TOKEN } from './tokens/people-repsitory.token';
+import { PeopleRepositoryService } from './people-repository';
 
 @NgModule({
   declarations: [App, Secondary, MyDirectove, Menu, SterownikLicznika, Licznik, Formularz],
   imports: [BrowserModule, CommonModule, AppRoutingModule, FormsModule],
-  providers: [provideBrowserGlobalErrorListeners(), LicznikGlobalny],
+  providers: [
+    provideBrowserGlobalErrorListeners(), 
+    LicznikGlobalny,
+    { provide: PEOPLE_REPSITORY_TOKEN, useExisting: PeopleRepositoryService }
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

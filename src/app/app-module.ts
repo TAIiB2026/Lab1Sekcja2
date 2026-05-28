@@ -14,6 +14,8 @@ import { LicznikGlobalny } from './services/licznik-globalny';
 import { Formularz } from './formularz/formularz';
 import { PEOPLE_REPSITORY_TOKEN } from './tokens/people-repsitory.token';
 import { PeopleRepositoryService } from './people-repository';
+import { provideHttpClient } from '@angular/common/http';
+import { PeopleWebapi } from './people-webapi';
 
 @NgModule({
   declarations: [App, Secondary, MyDirectove, Menu, SterownikLicznika, Licznik, Formularz],
@@ -21,7 +23,8 @@ import { PeopleRepositoryService } from './people-repository';
   providers: [
     provideBrowserGlobalErrorListeners(), 
     LicznikGlobalny,
-    { provide: PEOPLE_REPSITORY_TOKEN, useExisting: PeopleRepositoryService }
+    { provide: PEOPLE_REPSITORY_TOKEN, useClass: PeopleWebapi },
+    provideHttpClient()
   ],
   bootstrap: [App],
 })

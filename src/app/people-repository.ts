@@ -3,9 +3,7 @@ import { PersonClass } from './classes/person.class';
 import { PeopleRepsitoryInterface } from './interfaces/people-repository.interface';
 import { Observable, of } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class PeopleRepositoryService implements PeopleRepsitoryInterface {
   private repo: PersonClass[] = [
     new PersonClass(1, "Jan", "Kowalski", new Date(1990, 2, 30)),
@@ -15,14 +13,16 @@ export class PeopleRepositoryService implements PeopleRepsitoryInterface {
     new PersonClass(5, "Jan", "Igrekowy", new Date(2005, 1, 11)),
   ];
 
-  public get(): PersonClass[] {
-    return this.repo.map(r => new PersonClass(r.id, r.name, r.surname, r.dateOfBirth));
+  public Get(): Observable<PersonClass[]> {
+    const res = this.repo.map(r => new PersonClass(r.id, r.name, r.surname, r.dateOfBirth));
+    return of(res);
   }
 
-  public getByID(id: number) {
+  public GetByID(id: number): Observable<PersonClass> {
     const obj = this.repo.find(r => r.id === id);
     if(obj) {
-      return new PersonClass(obj.id, obj.name, obj.surname, obj.dateOfBirth);
+      const res = new PersonClass(obj.id, obj.name, obj.surname, obj.dateOfBirth);
+      return of(res);
     }
 
     throw new Error("Nie odnaleziono osoby o id = " + id);
